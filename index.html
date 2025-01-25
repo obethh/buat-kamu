@@ -15,6 +15,7 @@
       position: relative;
       width: 100vw;
       height: 100vh;
+      z-index: 10;
     }
 
     .slider {
@@ -94,9 +95,44 @@
     .button.next {
       right: 8px;
     }
+
+    .heart-container {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #fce8e8; /* Sesuaikan background */
+  z-index: 1; 
+}
+
+.heart {
+  position: absolute;
+  animation: moveUp 5s linear infinite;
+  width: 40px; /* Ukuran love */
+  left: calc(50% - 20px); /* Posisikan di tengah */
+}
+
+/* Animasi bergerak ke atas */
+@keyframes moveUp {
+  from {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+}
+    
   </style>
 </head>
 <body>
+  <div class="heart-container">
+        <img src="./images/heart.png" class="heart" />
+        <img src="./images/heart.png" class="heart" />
+        <img src="./images/heart.png" class="heart" />
+      </div>
+  
     <audio id="backgroundMusic" loop>
         <source src="lagunya.mp3" type="audio/mpeg">
         Browser kamu tidak mendukung audio.
@@ -165,6 +201,26 @@
   </div>
 
   <script>
+    const container = document.querySelector('.heart-container');
+
+function createHeart() {
+  const heart = document.createElement('img');
+  heart.src = './images/heart.png'; // Sesuaikan path
+  heart.classList.add('heart');
+  heart.style.left = Math.random() * 100 + 'vw'; // Random posisi
+  heart.style.animationDuration = Math.random() * 3 + 2 + 's'; // Durasi animasi
+  heart.style.width = Math.random() * 20 + 40 + 'px'; // Ukuran hati
+
+  container.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove(); // Hapus hati setelah animasi selesai
+  }, 5000);
+}
+
+setInterval(createHeart, 1000); // Tambahkan hati setiap detik
+
+    
 const playButton = document.getElementById('playMusicButton');
   const backgroundMusic = document.getElementById('backgroundMusic');
 
