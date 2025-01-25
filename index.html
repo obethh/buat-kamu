@@ -53,6 +53,7 @@
     text-align: justify;
   }
 
+
     .button {
       position: absolute;
       top: 50%;
@@ -85,12 +86,18 @@
   </style>
 </head>
 <body>
-  <!-- Audio -->
-  <audio id="backgroundMusic" autoplay loop>
-    <source src="lagunya.mp3" type="audio/mpeg">
-  </audio>
+    <audio id="backgroundMusic" loop>
+        <source src="lagunya.mp3" type="audio/mpeg">
+        Browser kamu tidak mendukung audio.
+      </audio>
+      
 
   <div class="slider-container">
+    <div style="position: absolute; top: 10px; left: 10px; z-index: 10;">
+        <button id="playMusicButton" style="padding: 10px 20px; border: none; border-radius: 5px; background-color: #ff6f61; color: white; cursor: pointer; font-size: 14px;">
+          Play Musik
+        </button>
+      </div>      
     <div class="slider" id="slider">
       <div class="slide">
         <div>
@@ -117,8 +124,12 @@
       <div class="slide">
         <div>
           <p>akuu jugaa pengenn tahuu, nisaa adaa sesuatuu yanggg ngerasaa kuranggg nyamannn ndaa di hubungann kitaa sekaranggg? atauuu adaa yang akuu perluu perbaikiii??
-            akuu pengenn nisaa lebihh terbukaa dann jujurr apalagii dalamm komunikasiii, nisaa ituu orang yangg akuu cintaa 🫵🏻, akuu ndaa bakall marahh,dll, malahh kalauu nisaa ndaa bilangg apaa²/jelasinn akuu bakall sulitt buatt pahaminn dann bisaa jadii salahh pahamm, kitaa inii pacarann komunikasi kitaa haruss 2 arahh, kitaa haruss salingg mengertiii satuu samaa lainn, jadii nisaa kalauu adaa apaa2 lebihh terbukaa dan ceritaa kee akuu yaa, nisaaa sayanggg bilangg sajaa apaa yangg bikinn nisaaa ndaa sukaa, apaa yangg gabolee akuu lakuinn dann apaaa yangg haruss akuu lakuinn, akuu jugaa pengenn jagaa perasaan nisaaa, akuu sayanggg nisaaaa, akuuu pengenn lebihh bisaa memahaminn nisaa, kenapaa nisaa beginii,begituuu,dll, akuu pengenn belajarr pelann² buatt pahaminn ituu semuaaa karenaa akuu pengenn hubungann kitaa baikk² sajaa, nisaa mauu kann kitaa samaa² bangunn hubungann iniii jadii lebihh baikk ?? nisaa masii samaa sepertii duluu kann ???.
-            jujurrr akuu jugaa adaa rasaa takutt kalauu nisaa lepass cp, sebenarnyaa rasaa takutt inii adaa darii duluu tapii akuu beraniii bilangg sekaranggg, rasaaa takutt kalauu nisaaa nantii dii deketinn cowoo,dll ☹️ soalnyaaa merekaa ndatauu kalauu nisaa punyaa pacarr, kadangg adaa orangg yang sudaa tauu punn tapii masii tetepp cobaa deketeiinn, moduss²,dll, akuu jugaa cowoo laa jadii akuu pahamm cowoo ituu gimanaa makannyaa akuu khawatirr, ituu sajaa isii hatii akuu, maaf yaa kalauu akuu sukaa ovt,cemburuu,dll beginii soalnyaa akuu sayangg nisaa laa, akuu khawatirr dann takutt kehilangann nisaaa, ituu sajaa isiii hatii akuu, luvvv uuuuuuuu ❤️</p>
+            akuu pengenn nisaa lebihh terbukaa dann jujurr apalagii dalamm komunikasiii, nisaa ituu orang yangg akuu cintaa 🫵🏻, akuu ndaa bakall marahh,dll, malahh kalauu nisaa ndaa bilangg apaa²/jelasinn akuu bakall sulitt buatt pahaminn dann bisaa jadii salahh pahamm, kitaa inii pacarann komunikasi kitaa haruss 2 arahh, kitaa haruss salingg mengertiii satuu samaa lainn, jadii nisaa kalauu adaa apaa2 lebihh terbukaa dan ceritaa kee akuu yaa, nisaaa sayanggg bilangg sajaa apaa yangg bikinn nisaaa ndaa sukaa, apaa yangg gabolee akuu lakuinn dann apaaa yangg haruss akuu lakuinn, akuu jugaa pengenn jagaa perasaan nisaaa, akuu sayanggg nisaaaa, akuuu pengenn lebihh bisaa memahaminn nisaa, kenapaa nisaa beginii,begituuu,dll, akuu pengenn belajarr pelann² buatt pahaminn ituu semuaaa karenaa akuu pengenn hubungann kitaa baikk² sajaa, nisaa mauu kann kitaa samaa² bangunn hubungann iniii jadii lebihh baikk ?? nisaa masii samaa sepertii duluu kann ???</p>
+        </div>
+      </div>
+      <div class="slide">
+        <div>
+          <p>jujurrr akuu jugaa adaa rasaa takutt kalauu nisaa lepass cp, sebenarnyaa rasaa takutt inii adaa darii duluu tapii akuu beraniii bilangg sekaranggg, rasaaa takutt kalauu nisaaa nantii dii deketinn cowoo,dll ☹️ soalnyaaa merekaa ndatauu kalauu nisaa punyaa pacarr, kadangg adaa orangg yang sudaa tauu punn tapii masii tetepp cobaa deketeiinn, moduss²,dll, akuu jugaa cowoo laa jadii akuu pahamm cowoo ituu gimanaa makannyaa akuu khawatirr, tapiii jugaa mauu lebihh percayaa kee nisaaa dann hilanginn rasaa khawatirr akuu tantangg lepass cp, ituu sajaa isii hatii akuu, maaf yaa kalauu akuu sukaa ovt,cemburuu,dll beginii soalnyaa akuu sayangg nisaa laa, akuu khawatirr dann takutt kehilangann nisaaa, ituu sajaa isiii hatii akuu, luvvv uuuuuuuu ❤️</p>
         </div>
       </div>
     </div>
@@ -135,6 +146,22 @@
   </div>
 
   <script>
+const playButton = document.getElementById('playMusicButton');
+  const backgroundMusic = document.getElementById('backgroundMusic');
+
+  playButton.addEventListener('click', () => {
+    if (backgroundMusic.paused) {
+      backgroundMusic.play();
+      playButton.textContent = 'Playing...';
+      playButton.style.backgroundColor = '#4caf50'; // Ubah warna tombol saat diputar
+    } else {
+      backgroundMusic.pause();
+      playButton.textContent = 'Play Musik';
+      playButton.style.backgroundColor = '#ff6f61'; // Ubah warna tombol ke awal
+    }
+  });
+
+
     const slider = document.getElementById('slider');
     const nextButton = document.getElementById('nextButton');
     const prevButton = document.getElementById('prevButton');
